@@ -10,6 +10,12 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\shooter">
+      <UniqueIdentifier>{fe0c6983-49ff-49e6-aaa9-a63519c8d13d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\memory">
+      <UniqueIdentifier>{c3d3cce5-6312-4a00-ae2c-cf43e47d29a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +27,12 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\shooter\Projectile.cpp">
+      <Filter>src\shooter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\shooter\SimpleShooter.cpp">
+      <Filter>src\shooter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -31,6 +43,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\shooter\Projectile.h">
+      <Filter>src\shooter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\shooter\SimpleShooter.h">
+      <Filter>src\shooter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
