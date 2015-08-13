@@ -53,21 +53,21 @@ bool SimpleShooter::init() {
 		Vec2 location=this->convertToNodeSpace(touch->getLocation());
 		this->m_player->setPosition(location);
 		createProjectile(location);
-		return true;	
+		return true;
 	};
 
 	listener->onTouchEnded = [&](Touch* touch,Event* event) {
 		//return true;
-	};
+		};
 
 	listener->onTouchMoved = [&](Touch* touch,Event* event) {
 		//return true;
-	};
+		};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 	return true;
 }
 
-void SimpleShooter::update(float dt) {	
+void SimpleShooter::update(float dt) {
 	movePlayer();
 	moveProjectiles();
 	moveForeground();
