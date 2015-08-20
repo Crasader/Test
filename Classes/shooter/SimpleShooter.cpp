@@ -6,11 +6,10 @@
  */
 
 #include "SimpleShooter.h"
+#include "util/ParallaxScrollingLayer.h"
 
-SimpleShooter::SimpleShooter() {
-	m_speed = 15;
-	m_projectileSpeed = 20;
-//	m_projectileList = new Vector<Projectile*>;
+SimpleShooter::SimpleShooter() :
+		m_speed(15), m_projectileSpeed(20) {
 }
 
 SimpleShooter::~SimpleShooter() {
@@ -33,12 +32,20 @@ bool SimpleShooter::init() {
 	m_foreground = Sprite::create("shooter/Foreground.png");
 	m_foreground->setAnchorPoint(Vec2(0, 0.5f));
 	m_foreground->setPosition(Vec2(0, visibleSize.height / 2));
-	addChild(m_foreground);
 
 	m_background = Sprite::create("shooter/Background.png");
 	m_background->setAnchorPoint(Vec2(0, 0.5f));
 	m_background->setPosition(Vec2(0, visibleSize.height / 2));
-	addChild(m_background);
+
+	ParallaxScrollingLayer* parallaxScrollingLayer =
+			ParallaxScrollingLayer::create();
+	parallaxScrollingLayer->setBackground(m_background);
+	parallaxScrollingLayer->setForeground(m_foreground);
+	parallaxScrollingLayer->setVisibleSize(visibleSize);
+	parallaxScrollingLayer->setPosition(Vec2::ZERO);
+	parallaxScrollingLayer->setAnchorPoint(Vec2::ZERO);
+	parallaxScrollingLayer->setSpeed(8);
+	addChild(parallaxScrollingLayer);
 
 	m_player = Sprite::create("shooter/Player.png");
 	m_player->setAnchorPoint(Vec2(0, 0.5f));
@@ -48,7 +55,6 @@ bool SimpleShooter::init() {
 	scheduleUpdate();
 
 	auto listener = EventListenerTouchOneByOne::create();
-
 	listener->onTouchBegan = [&](Touch* touch,Event* event) {
 		Vec2 location=this->convertToNodeSpace(touch->getLocation());
 		this->m_player->setPosition(location);
@@ -70,8 +76,8 @@ bool SimpleShooter::init() {
 void SimpleShooter::update(float dt) {
 	movePlayer();
 	moveProjectiles();
-	moveForeground();
-	moveBackgroud();
+	//moveForeground();
+	//moveBackgroud();
 }
 
 void SimpleShooter::movePlayer() {
@@ -92,31 +98,31 @@ void SimpleShooter::moveProjectiles() {
 	}
 }
 
-void SimpleShooter::moveForeground() {
-	float tmpX = m_foreground->getPositionX() - m_speed;
+//void SimpleShooter::moveForeground() {
+//	float tmpX = m_foreground->getPositionX() - m_speed;
+//
+//	m_foreground->setPositionX(tmpX);
+//
+//	float right = m_foreground->getPositionX()
+//			+ m_foreground->getContentSize().width;
+//
+//	if (right <= visibleSize.width) {
+//		m_foreground->setPositionX(right - visibleSize.width);
+//	}
+//}
 
-	m_foreground->setPositionX(tmpX);
-
-	float right = m_foreground->getPositionX()
-			+ m_foreground->getContentSize().width;
-
-	if (right <= visibleSize.width) {
-		m_foreground->setPositionX(right - visibleSize.width);
-	}
-}
-
-void SimpleShooter::moveBackgroud() {
-	float tmpX = m_background->getPositionX() - m_speed / 3;
-
-	m_background->setPositionX(tmpX);
-
-	float right = m_background->getPositionX()
-			+ m_background->getContentSize().width;
-
-	if (right <= visibleSize.width) {
-		m_background->setPositionX(right - visibleSize.width);
-	}
-}
+//void SimpleShooter::moveBackgroud() {
+//	float tmpX = m_background->getPositionX() - m_speed / 3;
+//
+//	m_background->setPositionX(tmpX);
+//
+//	float right = m_background->getPositionX()
+//			+ m_background->getContentSize().width;
+//
+//	if (right <= visibleSize.width) {
+//		m_background->setPositionX(right - visibleSize.width);
+//	}
+//}
 
 void SimpleShooter::createProjectile(Vec2 position) {
 	Projectile* projectile = Projectile::create("shooter/Projectile.png");
