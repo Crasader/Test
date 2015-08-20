@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "shooter\SimpleShooter.h"
+#include "shooter/SimpleShooter.h"
+#include "test/TestScene.h"
 
 USING_NS_CC;
 
@@ -73,7 +74,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	register_all_packages();
 
 	// create a scene. it's an autorelease object
-	auto scene = SimpleShooter::createScene();
+	auto scene = HelloWorld::createScene();
+	//auto scene = SimpleShooter::createScene();
+//	auto scene = TestScene::createScene();
 	// run
 	director->runWithScene(scene);
 	return true;
