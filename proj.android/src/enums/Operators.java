@@ -1,14 +1,14 @@
 package enums;
 
 /**
- * ÔËÓªÉÌ
+ * è¿è¥å•†
  * 
  * @author yss
  *
  */
 public class Operators {
-	public static String CMCC = "ÖĞ¹úÒÆ¶¯";
-	public static String CHU = "ÖĞ¹úÁªÍ¨";
-	public static String CHA = "ÖĞ¹úµçĞÅ";
-	public static String NONE = "ÎŞ";
+	public static String CMCC = "ä¸­å›½ç§»åŠ¨";
+	public static String CHU = "ä¸­å›½è”é€š";
+	public static String CHA = "ä¸­å›½ç”µä¿¡";
+	public static String NONE = "æ— ";
 }

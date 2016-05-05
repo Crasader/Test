@@ -10,9 +10,9 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-$(stat---------添加以下无须再手动添加cpp文件)
+$(start)
 # 遍历目录及子目录的函数 
-define walk
+define walk 
     $(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call walk, $(e))) 
 endef 
  
@@ -24,7 +24,7 @@ FILE_LIST := hellocpp/main.cpp
 FILE_LIST += $(filter %.cpp, $(ALLFILES)) 
  
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%) 
-$(end---------)
+$(end)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

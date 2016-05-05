@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.cn.test.R;
 
 /**
- * SIMCardInfoµÄ²âÊÔÓÃÀı
+ * SIMCardInfoçš„æµ‹è¯•ç”¨ä¾‹
  * 
  * @author yss
  *
@@ -28,23 +28,23 @@ public class TestSIMCardInfo {
 
 		Toast.makeText(context, String.format(tmp, simCardInfo.getOperators()),
 				Toast.LENGTH_LONG).show();
-		Log.e("AppActivity", "ÔËÓªÉÌ£º" + simCardInfo.getOperators() + ",ÔËÓªµÄÃû×Ö:"
+		Log.e("AppActivity", "è¿è¥å•†ï¼š" + simCardInfo.getOperators() + ",è¿è¥çš„åå­—:"
 				+ simCardInfo.getOperatorsName());
-		Log.e("AppActivity", "µç»°ºÅÂë:" + simCardInfo.getPhoneNumber());
+		Log.e("AppActivity", "ç”µè¯å·ç :" + simCardInfo.getPhoneNumber());
 		//
-		// ·µ»Øµ±Ç°ÒÆ¶¯ÖÕ¶Ë¸½½üÒÆ¶¯ÖÕ¶ËµÄĞÅÏ¢
+		// è¿”å›å½“å‰ç§»åŠ¨ç»ˆç«¯é™„è¿‘ç§»åŠ¨ç»ˆç«¯çš„ä¿¡æ¯
 		List<NeighboringCellInfo> infos = simCardInfo.getNeighboringCellInfo();
 		if (infos != null) {
 			if (infos.size() > 0) {
 				for (NeighboringCellInfo info : infos) {
-					// »ñÈ¡ÁÚ¾ÓĞ¡ÇøºÅ
+					// è·å–é‚»å±…å°åŒºå·
 					int cid = info.getCid();
-					// »ñÈ¡ÁÚ¾ÓĞ¡ÇøLAC£¬LAC:
-					// Î»ÖÃÇøÓòÂë¡£ÎªÁËÈ·¶¨ÒÆ¶¯Ì¨µÄÎ»ÖÃ£¬Ã¿¸öGSM/PLMNµÄ¸²¸ÇÇø¶¼±»»®·Ö³ÉĞí¶àÎ»ÖÃÇø£¬LACÔòÓÃÓÚ±êÊ¶²»Í¬µÄÎ»ÖÃÇø¡£
+					// è·å–é‚»å±…å°åŒºLACï¼ŒLAC:
+					// ä½ç½®åŒºåŸŸç ã€‚ä¸ºäº†ç¡®å®šç§»åŠ¨å°çš„ä½ç½®ï¼Œæ¯ä¸ªGSM/PLMNçš„è¦†ç›–åŒºéƒ½è¢«åˆ’åˆ†æˆè®¸å¤šä½ç½®åŒºï¼ŒLACåˆ™ç”¨äºæ ‡è¯†ä¸åŒçš„ä½ç½®åŒºã€‚
 					info.getLac();
 					info.getNetworkType();
 					info.getPsc();
-					// »ñÈ¡ÁÚ¾ÓĞ¡ÇøĞÅºÅÇ¿¶È
+					// è·å–é‚»å±…å°åŒºä¿¡å·å¼ºåº¦
 					info.getRssi();
 					Log.e("AppActivity", "lac:" + info.getLac());
 				}
