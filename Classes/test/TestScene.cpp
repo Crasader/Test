@@ -10,8 +10,9 @@
 USING_NS_CC;
 using namespace cocos2d::ui;
 
-TestScene::TestScene() :
-		cocosui_path("ccs-res/cocosui/"), _count(0) {
+TestScene::TestScene()
+:cocosui_path("ccs-res/cocosui/")
+,_count(0) {
 }
 
 Scene* TestScene::createScene() {

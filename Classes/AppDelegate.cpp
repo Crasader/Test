@@ -1,7 +1,9 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "shooter/SimpleShooter.h"
-#include "test/TestScene.h"
+//#include "HelloWorldScene.h"
+//#include "shooter/SimpleShooter.h"
+//#include "test/TestScene.h"
+#include "com/cn/xm/manager/StateManager.h"
+#include "com/cn/xm/state/GSFirst.h"
 
 USING_NS_CC;
 
@@ -11,7 +13,6 @@ static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
 AppDelegate::AppDelegate() {
-
 }
 
 AppDelegate::~AppDelegate() {
@@ -35,6 +36,7 @@ static int register_all_packages() {
 bool AppDelegate::applicationDidFinishLaunching() {
 	// initialize director
 	auto director = Director::getInstance();
+	//设置导演类的OpenGL视图
 	auto glview = director->getOpenGLView();
 	if (!glview) {
 		glview = GLViewImpl::create("My Game");
@@ -74,11 +76,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	register_all_packages();
 
 	// create a scene. it's an autorelease object
-	auto scene = HelloWorld::createScene();
+	//auto scene = HelloWorld::createScene();
 	//auto scene = SimpleShooter::createScene();
 //	auto scene = TestScene::createScene();
 	// run
-	director->runWithScene(scene);
+	//director->runWithScene(scene);
+	StateManager::getInstance()->setGameState(new GS_First());
 	return true;
 }
 

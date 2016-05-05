@@ -2,6 +2,7 @@
 #include "util/HRocker.h"
 
 USING_NS_CC;
+//using namespace network;
 
 Scene* HelloWorld::createScene() {
 	// 'scene' is an autorelease object
@@ -68,8 +69,48 @@ bool HelloWorld::init() {
 	HRocker* rocker = HRocker::create(Vec2(150.0f, 130.0f), 50.0f, spRocker,
 			spRockerBG, true); //创建摇杆
 	this->addChild((Node*) rocker); //摇杆添加到layer中
+	//
+	MenuItemImage *pDownloadItem = MenuItemImage::create(
+		"JoyStickPoint.png",
+		"JoyStickPoint.png",		
+		CC_CALLBACK_1(HelloWorld::menuDownloadCallback,this)
+		);
+
+	//CC_BREAK_IF(!pDownloadItem);
+
+	Size pWinSize = Director::getInstance()->getWinSize();
+
+	Menu* pDownloadMenu = Menu::create(pDownloadItem, NULL);
+	pDownloadMenu->setPosition(ccp(50, 50));
+
+//	CC_BREAK_IF(!pDownloadMenu);
+
+	this->addChild(pDownloadMenu, 1);
 
 	return true;
+}
+
+void HelloWorld::menuDownloadCallback(CCObject* pSender){	
+/*	HttpRequest* request = new (std::nothrow) HttpRequest();
+	request->setUrl("http://www.oschina.net/action/api/news_list");
+	request->setRequestType(HttpRequest::Type::POST);
+
+	std::vector<std::string> headers;
+	headers.push_back("Content-Type: application/json; charset=utf-8");
+	request->setHeaders(headers);
+
+	const char* postData = "catalog=2&pageIndex=1&pageSize=5";
+
+	request->setRequestData(postData, strlen(postData));
+
+//	request->setResponseCallback(this, CC_CALLBACK_1(HelloWorld::onHttpRequestCompleted,this));
+	request->setTag("Post_My_Data");
+	HttpClient::getInstance()->send(request);
+	request->release();*/
+}
+
+void HelloWorld::onHttpRequestCompleted(){
+
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender) {

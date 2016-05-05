@@ -40,8 +40,8 @@ private:
 private:
 	void movePlayer();
 	void moveProjectiles();
-	void moveForeground();
-	void moveBackgroud();
+	//void moveForeground();
+	//void moveBackgroud();
 	void createProjectile(Vec2 position);
 	void removeProjectile(Projectile* projectile);
 };
